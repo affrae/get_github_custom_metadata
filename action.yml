@@ -1,5 +1,5 @@
-name: 'GitHub Get Metadata'
-description: 'Get metadata from a GitHub issue that previously had metadata stored in the OP'
+name: 'Get GitHub Custom Metadata'
+description: 'Get custom metadata from a GitHub issue that previously had metadata stored in the OP'
 inputs:
   key:  # id of input
     description: 'The Key for the value to be retrived'
