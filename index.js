@@ -1,18 +1,32 @@
 const core = require('@actions/core');
-const wait = require('./wait');
+const github = require('@actions/github');
+const regex = /\n\n<!-- abm_metadata = (.*) -->/
 
 
-// most @actions toolkit packages have async methods
 async function run() {
+
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
+    const issue = github.context.issue;
+    const key = core.getInput('key');
+    const myToken = core.getInput('myToken');
+    const octokit = github.getOctokit(myToken);
+    console.log(issue['owner']);
+    console.log(issue['repo']);
+    console.log(issue['number']);
 
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
+    const body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue['number']})).data.body;
 
-    core.setOutput('time', new Date().toTimeString());
+    console.log(body);
+
+    const match = body.match(regex)
+
+    if (match) {
+      console.log("Found key: " + key)
+      const data = JSON.parse(match[1])
+      return key ? data && data[key] : data
+    }
+    console.log("Did not find key: " + key)
+
   } catch (error) {
     core.setFailed(error.message);
   }
