@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const regex = /\n\n<!-- abm_metadata = (.*) -->/
 
-// run async 
+// run async
 async function run() {
 
   try {
@@ -21,11 +21,13 @@ async function run() {
     const match = body.match(regex)
 
     if (match) {
-      console.log("Found key: " + key)
       const data = JSON.parse(match[1])
+      console.log("Found custom metadata")
+      console.log("Returning: " + (key ? data && data[key] : data))
+
       return key ? data && data[key] : data
     }
-    console.log("Did not find key: " + key)
+    console.log("Did not find custom metadata")
 
   } catch (error) {
     core.setFailed(error.message);
