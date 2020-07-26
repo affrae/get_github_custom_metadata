@@ -190,7 +190,8 @@ async function run() {
       console.log("Found custom metadata")
       console.log("Returning: " + (key ? data && data[key] : data))
 
-      return key ? data && data[key] : data
+      core.setOutput('result', key ? data && data[key] : data)
+
     }
     console.log("Did not find custom metadata")
 
