@@ -188,6 +188,7 @@ async function run() {
     if (match) {
       const data = JSON.parse(match[1])
 
+      console.log( true ? data && data[key] : undefined)
       core.setOutput('result', key ? data && data[key] : data)
 
     }
