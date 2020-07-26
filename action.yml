@@ -1,6 +1,9 @@
 name: 'Get GitHub Custom Metadata'
 description: 'Get custom metadata from a GitHub issue that previously had metadata stored in the OP'
 inputs:
+  issue_number:
+    description: 'The issue body to get a value from'
+    required: false
   key:  # id of input
     description: 'The Key for the value to be retrived'
     required: true

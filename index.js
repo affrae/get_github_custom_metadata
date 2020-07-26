@@ -6,7 +6,7 @@ const regex = /\n\n<!-- abm_metadata = (.*) -->/
 async function run() {
 
   try {
-    const issue = github.context.issue;
+    const issue = core.getInput('issue_number') ? core.getInput('issue_number') : github.context.issue;
     const key = core.getInput('key');
     const myToken = core.getInput('myToken');
     const octokit = github.getOctokit(myToken);
