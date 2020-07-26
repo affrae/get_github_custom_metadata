@@ -171,12 +171,13 @@ const regex = /\n\n<!-- abm_metadata = (.*) -->/
 async function run() {
 
   try {
-    const issue = core.getInput('issue_number') ? core.getInput('issue_number') : github.context.issue;
+    const issue = github.context.issue;
+    const issue_number = core.getInput('issue_number') ? core.getInput('issue_number') : github.context.issue['number'];
     const key = core.getInput('key');
     const myToken = core.getInput('myToken');
     const octokit = github.getOctokit(myToken);
 
-    const body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue['number']})).data.body;
+    let body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue_number})).data.body;
 
 
     const match = body.match(regex)
