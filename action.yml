@@ -7,9 +7,6 @@ inputs:
   myToken:  # id of input
     description: 'The token for access'
     required: true
-outputs:
-   value:
-     description: 'The returned value'
 runs:
   using: 'node12'
   main: 'dist/index.js'
