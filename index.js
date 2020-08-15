@@ -12,6 +12,7 @@ async function run() {
     const myToken = core.getInput('myToken');
     const octokit = github.getOctokit(myToken);
 
+    console.log("key: " + key);
     console.log("issue_number: " + issue_number);
 
 
