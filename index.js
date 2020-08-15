@@ -18,6 +18,7 @@ async function run() {
 
     let body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue_number})).data.body;
 
+    console.log("body: " + body);
 
     const match = body.match(regex)
 
