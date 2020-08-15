@@ -177,11 +177,13 @@ async function run() {
     const myToken = core.getInput('myToken');
     const octokit = github.getOctokit(myToken);
 
+    console.log("key: " + key);
     console.log("issue_number: " + issue_number);
 
 
     let body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue_number})).data.body;
 
+    console.log("body: " + body);
 
     const match = body.match(regex)
 
