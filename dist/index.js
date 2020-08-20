@@ -165,7 +165,7 @@ module.exports = require("os");
 
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
-const regex = /\n\n<!-- abm_metadata = (.*) -->/
+const regex = /<!-- abm_metadata = (.*) -->/
 
 // run async
 async function run() {
@@ -182,8 +182,6 @@ async function run() {
 
 
     let body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue_number})).data.body;
-
-    console.log("body: " + body);
 
     const match = body.match(regex)
 
