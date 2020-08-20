@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const regex = /\n\n<!-- abm_metadata = (.*) -->/
+const regex = /<!-- abm_metadata = (.*) -->/
 
 // run async
 async function run() {
@@ -17,8 +17,6 @@ async function run() {
 
 
     let body = (await octokit.issues.get({owner:issue['owner'],repo:issue['repo'],issue_number:issue_number})).data.body;
-
-    console.log("body: " + body);
 
     const match = body.match(regex)
 
