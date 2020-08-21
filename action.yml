@@ -1,13 +1,18 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Get GitHub Custom Metadata'
+description: 'Get custom metadata from a GitHub issue that previously had metadata stored in the OP'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  issue_number:
+    description: 'The issue body to get a value from'
+    required: false
+  key:  # id of input
+    description: 'The Key for the value to be retrived'
     required: true
-    default: '1000'
+  myToken:  # id of input
+    description: 'The token for access'
+    required: true
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  value:
+    description: 'The value returned'
 runs:
   using: 'node12'
   main: 'dist/index.js'
