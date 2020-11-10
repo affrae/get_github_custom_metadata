@@ -10,12 +10,8 @@ inputs:
   myToken:  # id of input
     description: 'The token for access'
     required: true
-#  getArray:  # id of input
-#    description: 'Set to true to return the entire metadata object'
-#    required: false
-#    default: false
 outputs:
-  result:
+  value:
     description: 'The value returned'
 runs:
   using: 'node12'
