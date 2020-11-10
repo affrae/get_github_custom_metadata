@@ -10,7 +10,6 @@ async function run() {
     const issue_number = core.getInput('issue_number') ? core.getInput('issue_number') : github.context.issue['number'];
     const key = core.getInput('key');
     const myToken = core.getInput('myToken');
-//    const getArray = core.getInput('getArray');
     const octokit = github.getOctokit(myToken);
 
     console.log("key: " + key);
@@ -24,12 +23,8 @@ async function run() {
     if (match) {
       const data = JSON.parse(match[1])
 
-//      if(getArray){
-//        core.setOutput('result', data)
-//      } else {
-        console.log("result: " + key ? data && data[key] : data)
-        core.setOutput('result', key ? data && data[key] : data)
-//      }
+      console.log("result: " + key ? data && data[key] : data)
+      core.setOutput('result', key ? data && data[key] : data)
 
     }
 
