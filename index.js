@@ -22,11 +22,12 @@ async function run() {
 
     if (match) {
       const data = JSON.parse(match[1])
-
-      console.log("result: " + key ? data && data[key] : data)
-      core.setOutput('result', key ? data && data[key] : data)
-
+    } else {
+      const data = JSON.parse('{}')
     }
+
+    console.log("result: " + key ? data && data[key] : data)
+    core.setOutput('result', key ? data && data[key] : data)
 
   } catch (error) {
     core.setFailed(error.message);
