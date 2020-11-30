@@ -195,6 +195,7 @@ async function run() {
     core.setOutput('result', key ? data && data[key] : data)
 
   } catch (error) {
+    console.log("There has been an error")
     core.setFailed(error.message);
   }
 }
