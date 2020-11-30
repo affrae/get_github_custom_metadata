@@ -186,9 +186,9 @@ async function run() {
     const match = body.match(regex)
 
     if (match) {
-      const data = JSON.parse(match[1])
+      data = JSON.parse(match[1])
     } else {
-      const data = JSON.parse('{}')
+      data = JSON.parse('{}')
     }
 
     console.log( true ? data && data[key] : undefined)
