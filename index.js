@@ -26,7 +26,6 @@ async function run() {
       data = JSON.parse('{}')
     }
 
-    console.log("result: " + (key ? data && data[key] : data))
     core.setOutput('result', key ? data && data[key] : data)
 
   } catch (error) {
